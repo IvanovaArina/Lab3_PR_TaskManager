@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using TaskManager.Data;
 using TaskManager.Mappings;
 using TaskManager.Repositories;
+using TaskManager.Services;
 
 namespace TaskManager
 {
@@ -31,7 +32,7 @@ namespace TaskManager
                     builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
                 });
             });
-
+            builder.Services.AddScoped<IEmailService, EmailService>();
             var app = builder.Build();
             // Применение миграций с отладкой
             // Применение миграций
